@@ -53,7 +53,7 @@ function handleRegister(e) {
 function showDashboard() {
     document.getElementById('login-screen').classList.add('hidden');
     document.getElementById('main-dashboard').classList.remove('hidden');
-    document.getElementById('user-display').innerText = userData.email;
+    // document.getElementById('user-display').innerText = userData.email; // Removido para manter XTAL Automações
     updateCounter();
 }
 
@@ -118,9 +118,10 @@ function finishAudit() {
     results.innerHTML = `
         <div class="result-card">
             <h3>AUDITORIA CONCLUÍDA: ${document.getElementById('target').value}</h3>
-            <p>Dossiê Forense gerado com sucesso pela IA Antigravity.</p>
+            <p>Dossiê Forense gerado com sucesso pela IA Antigravity em ${new Date().toLocaleDateString()}.</p>
+            <p>Este documento contém a análise completa de evolução patrimonial, vínculos com construtoras e licitações ativas.</p>
             <div class="actions">
-                <button onclick="downloadPDF()">BAIXAR DOSSIÊ (PDF)</button>
+                <button onclick="downloadPDF()">GERAR PDF / IMPRIMIR DOSSIÊ</button>
             </div>
         </div>
     `;
@@ -148,7 +149,7 @@ function openInstagram() {
 }
 
 function downloadPDF() {
-    alert("Iniciando download do Dossiê Blindado...");
+    window.print();
 }
 
 // INICIALIZAÇÃO
