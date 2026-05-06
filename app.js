@@ -58,7 +58,8 @@ function showDashboard() {
 }
 
 function updateCounter() {
-    if (userData.email === 'clodoaldoxtal@gmail.com') {
+    const admins = ['clodoaldoxtal@gmail.com', 'clodoaldoperito@gmail.com'];
+    if (admins.includes(userData.email)) {
         document.getElementById('queries-left').innerText = "MODO ADMINISTRADOR XTAL";
         return;
     }
@@ -79,7 +80,8 @@ function performAudit() {
     if (!target) return alert("INSIRA UM ALVO VÁLIDO.");
 
     // Verificar Limites (Ignora para Admin)
-    if (userData.email !== 'clodoaldoxtal@gmail.com') {
+    const admins = ['clodoaldoxtal@gmail.com', 'clodoaldoperito@gmail.com'];
+    if (!admins.includes(userData.email)) {
         if (userData.queriesDone >= FREE_QUERIES_LIMIT && !userData.hasSocialUnlock) {
             showPaywall();
             return;
