@@ -58,6 +58,10 @@ function showDashboard() {
 }
 
 function updateCounter() {
+    if (userData.email === 'clodoaldoxtal@gmail.com') {
+        document.getElementById('queries-left').innerText = "MODO ADMINISTRADOR XTAL";
+        return;
+    }
     const left = FREE_QUERIES_LIMIT - userData.queriesDone;
     const el = document.getElementById('queries-left');
     if (left > 0) {
@@ -74,10 +78,12 @@ function performAudit() {
     const target = document.getElementById('target').value;
     if (!target) return alert("INSIRA UM ALVO VÁLIDO.");
 
-    // Verificar Limites
-    if (userData.queriesDone >= FREE_QUERIES_LIMIT && !userData.hasSocialUnlock) {
-        showPaywall();
-        return;
+    // Verificar Limites (Ignora para Admin)
+    if (userData.email !== 'clodoaldoxtal@gmail.com') {
+        if (userData.queriesDone >= FREE_QUERIES_LIMIT && !userData.hasSocialUnlock) {
+            showPaywall();
+            return;
+        }
     }
 
     // Iniciar Processo Visual
