@@ -1,0 +1,247 @@
+:root {
+    --matrix-green: #00ff41;
+    --matrix-dark: #0d0208;
+    --matrix-glow: rgba(0, 255, 65, 0.3);
+    --cyan: #00f3ff;
+    --red: #ff003c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--matrix-dark);
+    color: var(--matrix-green);
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 255, 65, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    position: fixed;
+    bottom: 100%;
+    animation: scanline 6s linear infinite;
+}
+
+@keyframes scanline {
+    0% { bottom: 100%; }
+    100% { bottom: -100px; }
+}
+
+/* TERMINAL CARD / SCREENS */
+.screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.hidden { display: none !important; }
+
+.terminal-card {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid var(--matrix-green);
+    box-shadow: 0 0 20px var(--matrix-glow);
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.terminal-card header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--matrix-green);
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    opacity: 0.7;
+}
+
+input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--matrix-green);
+    color: var(--matrix-green);
+    padding: 12px;
+    font-family: inherit;
+    outline: none;
+}
+
+input:focus {
+    box-shadow: 0 0 10px var(--matrix-glow);
+}
+
+.glitch-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--matrix-green);
+    color: var(--matrix-dark);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.3s;
+}
+
+.glitch-btn:hover {
+    background: var(--cyan);
+    box-shadow: 0 0 30px var(--cyan);
+}
+
+/* DASHBOARD */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    border-bottom: 1px solid var(--matrix-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+}
+
+.v2 {
+    font-size: 0.6rem;
+    background: var(--red);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 2px;
+    vertical-align: middle;
+}
+
+.search-area {
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-box input {
+    flex: 1;
+    font-size: 1.2rem;
+}
+
+.search-box button {
+    padding: 0 30px;
+    background: var(--matrix-green);
+    color: var(--matrix-dark);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: var(--matrix-dark);
+    border: 2px solid var(--red);
+    padding: 40px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.pix-area img {
+    width: 250px;
+    margin: 20px 0;
+    border: 5px solid white;
+}
+
+.pix-key {
+    font-size: 0.6rem;
+    word-break: break-all;
+    background: #111;
+    padding: 10px;
+    border: 1px dashed var(--matrix-green);
+}
+
+.social-btn {
+    background: var(--cyan);
+    color: var(--matrix-dark);
+    border: none;
+    padding: 12px 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn {
+    background: transparent;
+    color: var(--red);
+    border: 1px solid var(--red);
+    margin-top: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+}

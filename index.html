@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMÔMETRO POLÍTICO | Auditoria Forense Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fundo Matrix -->
+    <canvas id="matrix-canvas"></canvas>
+    <div class="scanline"></div>
+
+    <div id="app">
+        <!-- TELA DE LOGIN / REGISTRO -->
+        <section id="login-screen" class="screen">
+            <div class="terminal-card">
+                <header>
+                    <span class="status-dot"></span>
+                    <h2>SISTEMA DE AUDITORIA INDEPENDENTE</h2>
+                </header>
+                <div class="content">
+                    <p class="typed">INSIRA SUAS CREDENCIAIS PARA ACESSO À BASE DE DADOS NACIONAL.</p>
+                    <form id="reg-form" onsubmit="handleRegister(event)">
+                        <div class="input-group">
+                            <label>E-MAIL</label>
+                            <input type="email" id="email" required placeholder="seu@email.com">
+                        </div>
+                        <div class="input-group">
+                            <label>WHATSAPP</label>
+                            <input type="tel" id="whatsapp" required placeholder="(11) 99999-9999">
+                        </div>
+                        <button type="submit" class="glitch-btn">ENTRAR NO SISTEMA</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- DASHBOARD PRINCIPAL -->
+        <section id="main-dashboard" class="screen hidden">
+            <header class="main-header">
+                <h1>TERMÔMETRO POLÍTICO <span class="v2">v2.0 ELITE</span></h1>
+                <div class="user-info">
+                    <span id="user-display"></span> | <span id="queries-left">Consultas: 1 Grátis</span>
+                </div>
+            </header>
+
+            <div class="search-area">
+                <p>DIGITE O NOME DO ALVO OU CNPJ DA CONSTRUTORA</p>
+                <div class="search-box">
+                    <input type="text" id="target" placeholder="Ex: RODRIGO FALSETTI">
+                    <button onclick="performAudit()">AUDITAR AGORA</button>
+                </div>
+            </div>
+
+            <!-- RESULTADOS -->
+            <div id="audit-process" class="hidden">
+                <div class="loader">
+                    <div class="scanner-bar"></div>
+                    <p id="process-text">CONECTANDO AO TSE...</p>
+                </div>
+            </div>
+
+            <div id="results-display" class="hidden">
+                <!-- Injetado via JS -->
+            </div>
+        </section>
+
+        <!-- PAYWALL / MODAL PIX -->
+        <div id="paywall-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>⚠️ CONSULTA BLOQUEADA</h2>
+                <p>Sua consulta gratuita expirou. Para continuar a auditoria forense:</p>
+                
+                <div class="pix-area">
+                    <p class="price">VALOR: R$ 5,00</p>
+                    <img src="pix_qr_5.png" alt="QR Code PIX R$ 5">
+                    <p class="pix-key">00020126450014br.gov.bcb.pix0123clodoaldoxtal@gmail.com52040000530398654055.005802BR5914CLODOALDO XTAL6010MOGI GUACU6304E737</p>
+                </div>
+
+                <div class="social-unlock">
+                    <hr>
+                    <p>OU GANHE MAIS UMA CONSULTA GRÁTIS:</p>
+                    <button class="social-btn" onclick="openInstagram()">SEGUIR & DESBLOQUEAR</button>
+                </div>
+                <button class="close-btn" onclick="closeModal()">FECHAR</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
