@@ -147,6 +147,15 @@ function finishAudit() {
                 <p>Score de Integridade: <strong style="color:#00ff41">74 / 100</strong></p>
             </div>
         `;
+    } else if (target.includes("ALEX") || target.includes("TAILANDIA")) {
+        specificData = `
+            <div class="forensic-box">
+                <p>⚠️ <strong>ALERTA DE MONITORAMENTO: ATIVO</strong></p>
+                <p>Vínculos Identificados: <strong>Rede de Logística / Comércio Regional</strong></p>
+                <p>Status: <strong>Análise de Fluxo de Caixa em Andamento</strong></p>
+                <p>Score de Integridade: <strong style="color:#00ff41">68 / 100</strong></p>
+            </div>
+        `;
     }
     
     results.innerHTML = `
